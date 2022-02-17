@@ -1,9 +1,9 @@
-package algorithm.dp.lis;
+package algorithm.dp.knapsack;
 
 public class CountofSubsetSum {
 	public static void main(String[] args) {
-		int[] arr = { 2, 3, 5, 8, 11 };
-		int sum = 10;
+		int[] arr = {1,1,2,3};
+		int sum = 4;
 		System.out.println("Count of subset sum for given sum:" + countOfSubsetSum(arr, sum));
 	}
 

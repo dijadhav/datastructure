@@ -1,4 +1,4 @@
-package algorithm.dp.lis;
+package algorithm.dp.knapsack;
 
 public class EqualSumPartision {
 

@@ -1,4 +1,4 @@
-package algorithm.dp.lis;
+package algorithm.dp;
 
 public class MaxProfit {
 	public static void main(String[] args) {

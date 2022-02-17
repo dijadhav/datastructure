@@ -1,4 +1,4 @@
-package algorithm.dp.lis;
+package algorithm.dp;
 
 /**
  * This class solves the LIS problem using brute-force algorithm

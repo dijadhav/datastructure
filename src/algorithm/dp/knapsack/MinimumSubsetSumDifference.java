@@ -1,4 +1,4 @@
-package algorithm.dp.lis;
+package algorithm.dp.knapsack;
 
 import java.util.ArrayList;
 import java.util.List;
