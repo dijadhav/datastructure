@@ -16,6 +16,44 @@ public class LongestCommonSubSequence {
 		System.out.println("Longest Common Subsequence Using Recurssion:" + lcsRecurssion(s1, s2, n, m));
 		System.out.println("Longest Common Subsequence Using Memoization:" + lcsMemoization(s1, s2, n, m));
 		System.out.println("Longest Common Subsequence Using TopDown:" + lcsTopDown(s1, s2, n, m));
+		System.out.println("Longest Common Subsequence Using TopDown:" + printLCS(s1, s2, n, m, ""));
+
+	}
+
+	private static String printLCS(String s1, String s2, int n, int m, String str) {
+		if (n == 0 || m == 0)
+			return "";
+
+		for (int i = 0; i < n + 1; i++) {
+			for (int j = 0; j < m + 1; j++) {
+				if (i == 0 || j == 0)
+					dp[i][j] = 0;
+			}
+		}
+		for (int i = 1; i < n + 1; i++) {
+			for (int j = 1; j < m + 1; j++) {
+				if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
+					dp[i][j] = 1 + dp[i - 1][j - 1];
+				} else {
+					dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+				}
+			}
+		}
+		int i = n, j = m;
+		while (i > 0 || j > 0) {
+			if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
+				str += s1.charAt(i - 1);
+				i--;
+				j--;
+			} else {
+				if (dp[i - 1][j] > dp[i][j - 1]) {
+					i--;
+				} else {
+					j--;
+				}
+			}
+		}
+		return new StringBuilder(str).reverse().toString();
 	}
 
 	private static int lcsRecurssion(String s1, String s2, int n, int m) {
