@@ -19,7 +19,7 @@ public class PalindromePartition {
 	}
 
 	private static int solveMemoization(String s, int i, int j) {
-		if (isPalindrom(s, i, j))
+		if (isPalindrome(s, i, j))
 			return 0;
 		if (dp[i][j] != -1)
 			return dp[i][j];
@@ -36,7 +36,7 @@ public class PalindromePartition {
 	}
 
 	private static int solveRecursive(String s, int i, int j) {
-		if (isPalindrom(s, i, j))
+		if (isPalindrome(s, i, j))
 			return 0;
 		int ans = Integer.MAX_VALUE;
 		for (int k = i; k < j; k++) {
@@ -46,11 +46,16 @@ public class PalindromePartition {
 		return ans;
 	}
 
-	private static boolean isPalindrom(String s, int i, int j) {
+	private static boolean isPalindrome(String s, int i, int j) {
 		if (i >= j)
 			return true;
-		StringBuilder sb = new StringBuilder(s);
-		return sb.reverse().toString().equals(s);
+		while (i < j) {
+			if (s.charAt(i) != s.charAt(i))
+				return false;
+			i++;
+			j--;
+		}
+		return true;
 	}
 
 }
