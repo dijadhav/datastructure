@@ -4,9 +4,9 @@ public class LongestPalindromicSubString {
 	private static int dp[][];
 
 	public static void main(String[] args) {
-		System.out.println("Longest Palindromic SubString:" + longestPalindromeSubstring("babad"));
-		System.out.println("Longest Palindromic SubString:" + longestPalindromeSubstring("cbbd"));
-		System.out.println("Longest Palindromic SubString:" + longestPalindromeSubstring("aacabdkacaa"));
+		///System.out.println("Longest Palindromic SubString:" + longestPalindromeSubstring("babad"));
+		//System.out.println("Longest Palindromic SubString:" + longestPalindromeSubstring("cbbd"));
+		System.out.println("Longest Palindromic SubString:" + longestPalindromeSubstring("abacdfgdcaba"));
 	}
 
 	public static String longestPalindromeSubstring(String s) {

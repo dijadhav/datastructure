@@ -7,8 +7,8 @@ public class ScrambledString {
 	private static Map<String, Boolean> map = new HashMap<>();
 
 	public static void main(String[] args) {
-		String a = "sqksrqzhhmfmlmqvlbnaqcmebbkqfy";
-		String b = "abbkyfqemcqnblvqmlmfmhhzqrskqs";
+		String a = "tqxpxeknttgwoppemjkivrulaflayn";
+		String b = "afaylnlurvikjmeppowgttnkexpxqt";
 		System.out.println("Is Scrambled:" + solve(a, b));
 		System.out.println("Is Scrambled:" + solveMemoizarion(a, b));
 
@@ -34,8 +34,8 @@ public class ScrambledString {
 		for (int i = 1; i < a.length(); i++) {
 			boolean condition1 = solve(a.substring(0, i), b.substring(0, i)) && solve(a.substring(i), b.substring(i));
 
-			boolean condition2 = solve(a.substring(0, i), b.substring(b.length() - i))
-					&& solve(a.substring(i), b.substring(0, b.length() - i));
+			boolean condition2 = solve(a.substring(0, i), b.substring(n - i))
+					&& solve(a.substring(i), b.substring(0, n - i));
 			if (condition1 || condition2) {
 				flag = true;
 				break;
@@ -59,7 +59,7 @@ public class ScrambledString {
 
 		/**** End Base Conditions *****/
 		// Memoization
-		String key = a + "" + b;
+		String key = a + "+" + b;
 		if (map.containsKey(key))
 			return map.get(key);
 
@@ -67,55 +67,34 @@ public class ScrambledString {
 		for (int i = 1; i < a.length(); i++) {
 			String s1 = a.substring(0, i);
 			String s2 = b.substring(0, i);
-			boolean r1 = false;
-			key = s1 + "" + s2;
-			if (map.containsKey(key))
-				r1 = map.get(key);
-			else {
-				r1 = solveMemoizarion(s1, s2);
-				map.put(key, r1);
-			}
+			boolean r1 = solveMemoizarion(s1, s2);
 
 			s1 = a.substring(i);
 			s2 = b.substring(i);
-			boolean r2 = false;
-			key = s1 + "" + s2;
-			if (map.containsKey(key))
-				r2 = map.get(key);
-			else {
-				r2 = solveMemoizarion(s1, s2);
-				map.put(key, r2);
-			}
+			boolean r2 = solveMemoizarion(s1, s2);
+
 			boolean condition1 = r1 && r2;
+			if (condition1) {
+				flag = true;
+				break;
+			}
 
 			s1 = a.substring(0, i);
 			s2 = b.substring(b.length() - i);
-			r1 = false;
-			key = s1 + "" + s2;
-			if (map.containsKey(key))
-				r1 = map.get(key);
-			else {
-				r1 = solveMemoizarion(s1, s2);
-				map.put(key, r1);
-			}
+			r1 = solveMemoizarion(s1, s2);
 
 			s1 = a.substring(i);
 			s2 = b.substring(0, b.length() - i);
-			r2 = false;
-			key = s1 + "" + s2;
-			if (map.containsKey(key))
-				r2 = map.get(key);
-			else {
-				r2 = solveMemoizarion(s1, s2);
-				map.put(key, r2);
-			}
+			r2 = solveMemoizarion(s1, s2);
+
 			boolean condition2 = r1 && r2;
 
-			if (condition1 || condition2) {
+			if (condition2) {
 				flag = true;
 				break;
 			}
 		}
+		map.put(key, flag);
 		return flag;
 	}
 
