@@ -8,8 +8,8 @@ public class EggDropping {
 	private static int[][] dp;
 
 	public static void main(String[] args) {
-		int f = 2000;
-		int e = 4;
+		int f = 9999;
+		int e = 100;
 		dp = new int[e + 1][f + 1];
 		for (int i = 0; i < e + 1; i++) {
 			for (int j = 0; j < f + 1; j++) {

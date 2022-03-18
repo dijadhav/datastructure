@@ -1,21 +1,13 @@
 package algorithm.search;
 
-public class CountNumberOfOccurance {
+public class FindFirstAndLastOccuranceOfElement {
+
 	public static void main(String[] args) {
-		int arr[] = { 5, 7, 7, 8, 8, 8, 10 };
+		int arr[] = { 5, 7, 7, 8, 8, 10 };
 		int num = 8;
 		int first = findFirstOccurance(arr, arr.length, num);
 		int last = findLastOccurance(arr, arr.length, num);
-		if (first == -1 && last == -1) {
-			System.out.println("0 occurance");
-			return;
-		}
-		if (first == -1 || last == -1) {
-			System.out.println("1 occurance");
-			return;
-		}
-		int cnt = last - first;
-		System.out.println((cnt + 1) + " occurances");
+		System.out.println(first + " " + last);
 	}
 
 	private static int findFirstOccurance(int[] arr, int length, int num) {
