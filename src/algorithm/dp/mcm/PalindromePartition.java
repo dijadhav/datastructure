@@ -4,7 +4,7 @@ public class PalindromePartition {
 	private static int[][] dp;
 
 	public static void main(String[] args) {
-		String s = "abac";
+		String s = "ab";
 		int i = 0;
 		int j = s.length() - 1;
 		dp = new int[s.length() + 1][s.length() + 1];

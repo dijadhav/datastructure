@@ -4,13 +4,13 @@ public class ShortestSuperSequence {
 	private static int dp[][];
 
 	public static void main(String[] args) {
-		String s1 = "AGGTAB";
-		String s2 = "GXTXAYB";
+		String s1 = "abac";
+		String s2 = "cab";
 		int n = s1.length();
 		int m = s2.length();
 		dp = new int[n + 1][m + 1];
 		System.out.println("Length of Shortest super sequece:" + (m + n - lcsRecurssion(s1, s2, n, m)));
-		System.out.println("Shirtest of super sequece:" + printSCS(s1, s2, n, m));
+		System.out.println("Shortest of super sequece:" + printSCS(s1, s2, n, m));
 	}
 
 	private static int lcsRecurssion(String s1, String s2, int n, int m) {

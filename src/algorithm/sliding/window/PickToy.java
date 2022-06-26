@@ -7,6 +7,36 @@ public class PickToy {
 
 	public static void main(String[] args) {
 		System.out.println(lenOfLongSubarr("abaccab", 2));
+		System.out.println(solve("abaccab", 7, 2));
+
+	}
+
+	static int solve(String s, int n, int k) {
+		if (n < k)
+			return 0;
+		int i = 0, j = 0, max = 0;
+		Map<Character, Integer> map = new HashMap<Character, Integer>();
+		while (j < n) {
+			char ch = s.charAt(j);
+			map.put(ch, map.getOrDefault(ch, 0) + 1);
+			if (map.size() == k) {
+				max = Math.max(max, j - i + 1);
+			} else {
+				while (map.size() > k) {
+					ch = s.charAt(i);
+					int cnt = map.getOrDefault(ch, 0);
+					cnt--;
+					if (cnt <= 0) {
+						map.remove(ch);
+					} else {
+						map.put(ch, cnt);
+					}
+					i++;
+				}
+			}
+			j++;
+		}
+		return max;
 	}
 
 	// Function for finding maximum and value pair

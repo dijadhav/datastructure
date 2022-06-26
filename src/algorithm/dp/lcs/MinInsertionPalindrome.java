@@ -4,7 +4,7 @@ public class MinInsertionPalindrome {
 	private static int dp[][];
 
 	public static void main(String[] args) {
-		System.out.println("Minimum Deletion:" + minDeletions("agbcba"));
+		System.out.println("Minimum Deletion:" + minDeletions("35577171707053"));
 	}
 
 	public static int minDeletions(String s) {

@@ -4,7 +4,7 @@ public class MatrixChainMuliplication {
 	private static int[][] dp;
 
 	public static void main(String[] args) {
-		int arr[] = { 10, 20, 30, 40, 30 };
+		int arr[] = { 1,2,3,4,5 };
 		int i = 1;
 		int j = arr.length - 1;
 		dp = new int[arr.length + 1][arr.length + 1];
@@ -38,10 +38,10 @@ public class MatrixChainMuliplication {
 	private static int solveRecursive(int[] arr, int i, int j) {
 		if (i >= j)
 			return 0;
-		int ans = Integer.MAX_VALUE;
+		int ans = Integer.MIN_VALUE;
 		for (int k = i; k < j; k++) {
 			int temp = solveRecursive(arr, i, k) + solveRecursive(arr, k + 1, j) + (arr[i - 1] * arr[k] * arr[j]);
-			ans = Math.min(ans, temp);
+			ans = Math.max(ans, temp);
 		}
 		return ans;
 	}
