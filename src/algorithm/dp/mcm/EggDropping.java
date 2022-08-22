@@ -8,27 +8,27 @@ public class EggDropping {
 	private static int[][] dp;
 
 	public static void main(String[] args) {
-		int f = 9999;
-		int e = 100;
+		int f = 14;
+		int e = 3;
 		dp = new int[e + 1][f + 1];
 		for (int i = 0; i < e + 1; i++) {
 			for (int j = 0; j < f + 1; j++) {
 				dp[i][j] = -1;
 			}
 		}
-		// System.out.println("Critical Floor: " + solve(f, e));
-		System.out.println("Critical Floor Memoize: " + solveMemoize1(f, e));
+		System.out.println("Critical Floor: " + solve(f, e));
+		// System.out.println("Critical Floor Memoize: " + solveMemoize(f, e));
 
 	}
 
 	private static int solve(int f, int e) {
 		/** Start Base Condition **/
-
-		if (f == 0 || f == 1 || e == 0 || e == 1)
+		if (f == 0 || f == 1)
 			return f;
-
+		if (e == 1)
+			return f;
 		int ans = Integer.MAX_VALUE;
-		for (int k = 1; k < f; k++) {
+		for (int k = 1; k <= f; k++) {
 			int temp = 1 + Math.max(solve(k - 1, e - 1), solve(f - k, e));
 			ans = Math.min(ans, temp);
 		}
@@ -83,6 +83,5 @@ public class EggDropping {
 		dp[e][f] = ans;
 		return ans;
 	}
-	
 
 }

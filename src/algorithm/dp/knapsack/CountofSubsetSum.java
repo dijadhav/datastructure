@@ -2,9 +2,20 @@ package algorithm.dp.knapsack;
 
 public class CountofSubsetSum {
 	public static void main(String[] args) {
-		int[] arr = {1,1,2,3};
+		int[] arr = { 1, 1, 2, 3 };
 		int sum = 4;
+		System.out.println("Count of subset sum for given sum:" + solve(arr, arr.length, sum));
 		System.out.println("Count of subset sum for given sum:" + countOfSubsetSum(arr, sum));
+	}
+
+	private static int solve(int arr[], int n, int sum) {
+		if (sum == 0)
+			return 1;
+		if (n == 0)
+			return 0;
+		if (arr[n - 1] <= sum)
+			return 1 +solve(arr, n - 1, sum - arr[n - 1]);
+		return solve(arr, n - 1, sum);
 	}
 
 	private static int countOfSubsetSum(int[] arr, int sum) {
