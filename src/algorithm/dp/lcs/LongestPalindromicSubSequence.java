@@ -1,7 +1,5 @@
 package algorithm.dp.lcs;
 
-import java.util.Iterator;
-
 public class LongestPalindromicSubSequence {
 
 	public static void main(String[] args) {
