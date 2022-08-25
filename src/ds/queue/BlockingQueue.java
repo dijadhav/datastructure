@@ -34,6 +34,7 @@ public class BlockingQueue {
 			}
 			count++;
 		}
+		notifyAll();
 	}
 
 	public Runnable dequeue() {
@@ -46,6 +47,7 @@ public class BlockingQueue {
 					System.out.println(e.getMessage());
 				}
 			}
+			notify();
 			if (null != head) {
 				task = head.task;
 				head = head.next;
@@ -55,6 +57,7 @@ public class BlockingQueue {
 				tail = null;
 			}
 		}
+		notifyAll();
 		return task;
 	}
 
