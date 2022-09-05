@@ -3,7 +3,16 @@ package algorithm.dp.knapsack;
 public class TragetSum {
 
 	public static void main(String[] args) {
-
+		int A[] = new int[] { 1, 1, 1, 1, 1 };
+		int target = 3;
+		int sum = 0;
+		for (int i = 0; i < A.length; i++) {
+			sum += A[i];
+		}
+		if (sum < target || (target + sum) % 2 != 0)
+			return;
+		sum = (sum - target) / 2;
+		System.out.println(countSubsetDiff(A, sum));
 	}
 
 	static int countSubsetDiff(int arr[], int sum) {

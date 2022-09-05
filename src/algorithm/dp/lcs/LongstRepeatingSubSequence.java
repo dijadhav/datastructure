@@ -8,7 +8,7 @@ public class LongstRepeatingSubSequence {
 		int n = s1.length();
 		int m = n;
 		dp = new int[n + 1][m + 1];
-		System.out.println("Longest Common Palindrom:" + longestCommonPalindrome(s1, s1, n, m));
+		System.out.println("Longst Repeating SubSequence:" + longestCommonPalindrome(s1, s1, n, m));
 	}
 
 	private static String longestCommonPalindrome(String s1, String s2, int n, int m) {

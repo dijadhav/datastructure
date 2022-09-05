@@ -1,53 +1,63 @@
 package ds.queue;
 
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
- * Implementation of blocking queue.
+ * Implementation of blocking queue using ReentrantLock
  * 
  * @author dijadhav
  *
  */
-public class BlockingQueue {
-	private Node head;
-	private Node tail;
-	private Object lock = new Object();
+public class BlockingQueue<E> {
+	private Node<E> head;
+	private Node<E> tail;
+	private Lock lock = new ReentrantLock();
+	private Condition notFull = lock.newCondition();
+	private Condition notEmpty = lock.newCondition();
 	private int max;
 	private int count = 0;
+
 	public BlockingQueue(int max) {
 		this.max = max;
 	}
 
 	public void enqueue(Runnable task) {
-		synchronized (lock) {
+		try {
+			lock.lock();
 			while (count >= max) {
 				try {
-					wait();
+					notEmpty.await();
 				} catch (InterruptedException e) {
 					System.out.println(e.getMessage());
 				}
 			}
 			if (null == head) {
-				head = new Node(task);
+				head = new Node<E>(task);
 				tail = head;
 			} else {
-				tail.next = new Node(task);
+				tail.next = new Node<E>(task);
 				tail = tail.next;
 			}
+			notFull.signalAll();
 			count++;
+		} finally {
+			lock.unlock();
 		}
-		notifyAll();
 	}
 
 	public Runnable dequeue() {
 		Runnable task = null;
-		synchronized (lock) {
+		try {
+			lock.lock();
 			while (count == 0) {
 				try {
-					wait();
+					notFull.await();
 				} catch (InterruptedException e) {
 					System.out.println(e.getMessage());
 				}
 			}
-			notify();
 			if (null != head) {
 				task = head.task;
 				head = head.next;
@@ -56,8 +66,10 @@ public class BlockingQueue {
 			if (null == head) {
 				tail = null;
 			}
+			notEmpty.signalAll();
+		} finally {
+			lock.unlock();
 		}
-		notifyAll();
 		return task;
 	}
 
@@ -66,9 +78,9 @@ public class BlockingQueue {
 	}
 }
 
-class Node {
+class Node<E> {
 	Runnable task;
-	Node next;
+	Node<E> next;
 
 	public Node(Runnable task) {
 		this.task = task;

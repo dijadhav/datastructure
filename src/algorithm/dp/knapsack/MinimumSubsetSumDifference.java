@@ -3,6 +3,15 @@ package algorithm.dp.knapsack;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * S1+S2 = sum
+ * |S1-S2|=min
+ * 
+ * 2S1=sum+min
+ * min=sum-2S1 
+ * @author dijadhav
+ *
+ */
 public class MinimumSubsetSumDifference {
 
 	public static void main(String[] args) {

@@ -1,5 +1,11 @@
 package algorithm.dp.knapsack.unbounded;
 
+/**
+ * https://www.geeksforgeeks.org/cutting-a-rod-dp-13/
+ * 
+ * @author dijadhav
+ *
+ */
 public class RoadCutting {
 
 	public static void main(String[] args) {

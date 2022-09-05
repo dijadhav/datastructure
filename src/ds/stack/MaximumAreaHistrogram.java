@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class MaximumAreaHistrogram {
 	public static void main(String[] args) {
-		long arr[] = { 1, 2, 3, 4, 5 };
+		long arr[] = {7,4,5,8,6};
 		long right[] = nextSmallerElementRight(arr, arr.length);
 		long left[] = nextSmallerElementLeft(arr, arr.length);
 		long max = 0;

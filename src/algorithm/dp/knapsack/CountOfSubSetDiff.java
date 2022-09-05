@@ -1,5 +1,13 @@
 package algorithm.dp.knapsack;
-
+/**
+ * S1+S2 = sum
+ * |S1-S2|=diff
+ * 
+ * 2S1=sum+diff
+ * S1=(sum+diff)/2
+ * @author dijadhav
+ *
+ */
 public class CountOfSubSetDiff {
 	public static void main(String[] args) {
 		int[] arr = { 1,1,2,3 };
