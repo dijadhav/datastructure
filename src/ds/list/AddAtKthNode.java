@@ -13,7 +13,7 @@ public class AddAtKthNode {
 		ListNode head = addAtkthElement(l1, 2, l5);
 		while (head != null) {
 			System.out.print(head.val + " ");
-			head=head.next;
+			head = head.next;
 		}
 	}
 
@@ -32,11 +32,11 @@ public class AddAtKthNode {
 		if (prev != null) {
 			newElement.next = current;
 			prev.next = newElement;
-		}else {
+		} else {
 			newElement.next = head;
 			head = newElement;
 		}
-	
+
 		return head;
 	}
 }

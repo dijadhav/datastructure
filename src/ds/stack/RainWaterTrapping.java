@@ -5,12 +5,7 @@ public class RainWaterTrapping {
 
 	// Method for maximum amount of water
 	static int findWater(int n) {
-		// left[i] contains height of tallest bar to the
-		// left of i'th bar including itself
 		int left[] = new int[n];
-
-		// Right [i] contains height of tallest bar to
-		// the right of ith bar including itself
 		int right[] = new int[n];
 		int water = 0;
 		left[0] = arr[0];
